@@ -32,10 +32,11 @@ on:
 jobs:
   ejecucion-de-script:
     runs-on: ubuntu-latest
-#    container:
-#      image: mathworks/matlab:latest
     steps:
       - name: Checkout del repositorio
         uses: actions/checkout@v2
       - name: Ejecución de imagen de MATLAB
-        run: docker run --rm -v $PWD/Scripts:/scripts -e MLM_LICENSE_FILE=7350@linuxcls10.dearborn.ford.com mathworks/matlab:r2021a matlab -nodisplay -nosplash -nodesktop -r "run('/scripts/example.m');exit;"
+        run: |
+              docker run --rm -v $PWD/scripts:/scripts mathworks/matlab:r2021a matlab -nodisplay -nosplash -nodesktop -r "run('/scripts/example.m');exit;"
+        env:
+          LM_LICENSE_FILE: /scripts/license.lic
