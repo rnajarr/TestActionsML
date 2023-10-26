@@ -12,5 +12,4 @@ jobs:
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
-      - name: Running matlab
-        run: docker run -it -e MLM_LICENSE_FILE=7350@linuxcls10.dearborn.ford.com --mount type=bind,source="${{ github.workspace}}",target=/scripts mathworks/matlab:r2021a matlab -nodisplay -nosplash -nodesktop -r "run('/scripts/example.m');exit;"
+      
