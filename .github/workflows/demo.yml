@@ -8,14 +8,14 @@ jobs:
     container:
       image: mathworks/matlab:latest
       volumes:
-        - ${{ github.workspace }}:/app
+        - ${{ github.workspace }}
     steps:
       - name: example command execute
-        run : ls -la
+        run : ls -l dist
       - name: pwd
         run : pwd
       - name: Print workspace
-        run : ls ${{ github.workspace }}
+        run : pwd ${{ github.workspace }}
       - name: Check out the repo
         uses: actions/checkout@v2
       
