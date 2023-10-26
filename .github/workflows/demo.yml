@@ -38,4 +38,4 @@ jobs:
       - name: Checkout del repositorio
         uses: actions/checkout@v2
       - name: Ejecución de imagen de MATLAB
-        run: docker run --rm -e MLM_LICENSE_FILE=7350@linuxcls10.dearborn.ford.com -v $PWD/Scripts:/scripts mathworks/matlab:r2021a matlab -nodisplay -nosplash -nodesktop -r "run('/scripts/example.m');exit;"
+        run: docker run --rm -v $PWD/Scripts:/scripts -e MLM_LICENSE_FILE=7350@linuxcls10.dearborn.ford.com mathworks/matlab:r2021a matlab -nodisplay -nosplash -nodesktop -r "run('/scripts/example.m');exit;"
