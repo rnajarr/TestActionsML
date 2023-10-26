@@ -1,18 +1,14 @@
-name: GitHub Actions Demo
+name: GitHub Actions Demo with Docker
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on: [push]
+on: push
 jobs:
   Explore-GitHub-Actions:
+    name: Run Matlab in docker
     runs-on: ubuntu-latest
+    container:
+      image: mathworks/matlab:latest
+      volumes:
+        - my-app/app
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-      - name: Check out repository code
-        uses: actions/checkout@v4
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+      - name: Running matlab
+        run: docker run -it -e MLM_LICENSE_FILE=7350@linuxcls10.dearborn.ford.com --mount type=bind,source="C:/Users/RNAJAR/Desktop",target=/scripts mathworks/matlab:r2021a matlab -nodisplay -nosplash -nodesktop -r "run('/scripts/example.m');exit;"
