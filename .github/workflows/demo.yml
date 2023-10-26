@@ -10,6 +10,8 @@ jobs:
       volumes:
         - ${{ github.workspace }}:/app
     steps:
+      - name: exmple command execute
+        run : ls -la
       - name: Check out the repo
         uses: actions/checkout@v2
       
