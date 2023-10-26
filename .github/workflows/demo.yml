@@ -1,23 +1,39 @@
-name: GitHub Actions Demo with Docker
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on: push
-jobs:
-  Explore-GitHub-Actions:
-    name: Run Matlab in docker
-    runs-on: ubuntu-latest
-    container:
-      image: mathworks/matlab:latest
-      volumes:
-        - ${{ github.workspace }}
-    steps:
-      - name: example command execute
-        run: ls -la
-      - name: pwd
-        run: pwd
-      - name: Print workspace
-        run: pwd ${{ github.workspace }}
-      - name: cd
-        run: cd ${{ github.workspace }} && ls
-      - name: Check out the repo
-        uses: actions/checkout@v2
+#name: GitHub Actions Demo with Docker
+#run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+#on: push
+#jobs:
+#  Explore-GitHub-Actions:
+#    name: Run Matlab in docker
+#    runs-on: ubuntu-latest
+#    container:
+#      image: mathworks/matlab:latest
+#      volumes:
+#        - ${{ github.workspace }}
+#    steps:
+#      - name: example command execute
+#        run: ls -la
+#      - name: pwd
+#        run: pwd
+#      - name: Print workspace
+#        run: pwd ${{ github.workspace }}
+#      - name: cd
+#        run: cd ${{ github.workspace }} && ls
+#      - name: Check out the repo
+#        uses: actions/checkout@v2
       
+
+name: Ejecución de script MATLAB
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  ejecucion-de-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v2
+      - name: Ejecución de imagen de MATLAB
+        run: docker run --rm -v $PWD/Scripts:/scripts mathworks/matlab:r2021a -nodisplay -r "run('/scripts/example.m')"
