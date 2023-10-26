@@ -11,11 +11,13 @@ jobs:
         - ${{ github.workspace }}
     steps:
       - name: example command execute
-        run : ls -l
+        run: ls -la
       - name: pwd
-        run : pwd
+        run: pwd
       - name: Print workspace
-        run : pwd ${{ github.workspace }}
+        run: pwd ${{ github.workspace }}
+      - name: cd
+        run: cd ${{ github.workspace }}
       - name: Check out the repo
         uses: actions/checkout@v2
       
