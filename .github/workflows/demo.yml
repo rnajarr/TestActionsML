@@ -8,7 +8,7 @@ jobs:
     container:
       image: mathworks/matlab:latest
       volumes:
-        - ${{ github.workspace}}
+        - ${{ github.workspace }}:/app
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
