@@ -37,7 +37,8 @@ jobs:
         uses: actions/checkout@v2
       - name: Ejecución de imagen de MATLAB
         run: |
-              docker run --rm -v $PWD/scripts:/scripts mathworks/matlab:r2021a /bin/bash -c "cd /scripts && matlab -nodisplay -r 'try, example, catch ME, fprintf('%s', getReport(ME)), exit(1), end, exit'" 
+              docker run --rm -v $PWD/Scripts:/scripts -v $PWD/Scripts/license.lic:/usr/local/MATLAB/R2021a/licenses/license.lic mathworks/matlab:r2021a /bin/bash -c "cd /scripts && matlab -nodisplay -r 'try, example, catch ME, fprintf('%s', getReport(ME)), exit(1), end, exit'"
+              #docker run --rm -v $PWD/scripts:/scripts mathworks/matlab:r2021a /bin/bash -c "cd /scripts && matlab -nodisplay -r 'try, example, catch ME, fprintf('%s', getReport(ME)), exit(1), end, exit'" 
               #matlab -nodisplay -nosplash -nodesktop -r "run('/scripts/example.m');exit;"
         env:
           LM_LICENSE_FILE: /scripts/license.lic
