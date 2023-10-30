@@ -1,3 +1,22 @@
+name: Ejecución de script de MATLAB
+on:
+  push:
+    branches: [ main ]
+jobs:
+  ejecutar_script_matlab:
+    runs-on: ubuntu-latest
+    container:
+      image: matlab:r2021a
+    steps:
+    - name: Clonar el repositorio
+      uses: actions/checkout@v2
+    - name: Ejecutar script de MATLAB
+      run: |
+        cd scripts
+        matlab -nodisplay -nosplash -r "run('example.m')"
+
+
+
 #name: GitHub Actions Demo with Docker
 #run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 #on: push
@@ -21,23 +40,23 @@
 #      - name: Check out the repo
 #        uses: actions/checkout@v2
       
-name: Ejecución de script MATLAB
+#name: Ejecución de script MATLAB
 
-on:
-  push:
-    branches:
-      - main
+#on:
+ # push:
+  #  branches:
+   #   - main
 
-jobs:
-  ejecucion-de-script:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout del repositorio
-        uses: actions/checkout@v2
-      - name: Ejecución de imagen de MATLAB
-        run: |
-              docker run --rm -v $PWD/Scripts:/scripts -v $PWD/Scripts/license.lic:/usr/local/MATLAB/R2021a/licenses/license.lic mathworks/matlab:r2021a /bin/bash -c "cd /scripts && matlab -nodisplay -r 'try, example, catch ME, fprintf('%s', getReport(ME)), exit(1), end, exit'"
+#jobs:
+ # ejecucion-de-script:
+  #  runs-on: ubuntu-latest
+   # steps:
+    #  - name: Checkout del repositorio
+     #   uses: actions/checkout@v2
+     # - name: Ejecución de imagen de MATLAB
+      #  run: |
+       #       docker run --rm -v $PWD/Scripts:/scripts -v $PWD/Scripts/license.lic:/usr/local/MATLAB/R2021a/licenses/license.lic mathworks/matlab:r2021a /bin/bash -c "cd /scripts && matlab -nodisplay -r 'try, example, catch ME, fprintf('%s', getReport(ME)), exit(1), end, exit'"
               #docker run --rm -v $PWD/scripts:/scripts mathworks/matlab:r2021a /bin/bash -c "cd /scripts && matlab -nodisplay -r 'try, example, catch ME, fprintf('%s', getReport(ME)), exit(1), end, exit'" 
               #matlab -nodisplay -nosplash -nodesktop -r "run('/scripts/example.m');exit;"
-        env:
-          LM_LICENSE_FILE: /scripts/license.lic
+        #env:
+         # LM_LICENSE_FILE: /scripts/license.lic
