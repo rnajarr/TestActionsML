@@ -8,6 +8,10 @@ jobs:
     container:
       image: mathworks/matlab:r2021a
     steps:
+    - name: Establecer permisos en el directorio temporal de GitHub Actions
+      run: |
+        sudo chown -R $USER:$USER /__w/_temp
+
     - name: Establecer permisos en el directorio de trabajo
       run: |
             sudo chown -R $USER:$USER $GITHUB_WORKSPACE
