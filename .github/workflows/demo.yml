@@ -6,7 +6,7 @@ jobs:
   ejecutar_script_matlab:
     runs-on: ubuntu-latest
     container:
-      image: matlab:r2021a
+      image: mathworks/matlab:r2021a
     steps:
     - name: Clonar el repositorio
       uses: actions/checkout@v2
