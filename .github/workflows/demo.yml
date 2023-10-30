@@ -10,7 +10,7 @@ jobs:
     steps:
     - name: Establecer permisos en el directorio de trabajo
       run: |
-            sudo chown -R runner:runner $GITHUB_WORKSPACE
+            sudo chown -R $USER:$USER $GITHUB_WORKSPACE
     - name: Clonar el repositorio
       uses: actions/checkout@v2
     - name: Ejecutar script de MATLAB
