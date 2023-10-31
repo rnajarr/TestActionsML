@@ -1,4 +1,5 @@
-FROM matlab:r2020a
+# Imagen base de MATLAB
+FROM mathworks/matlab:r2020a
 
 # Copiar el script .m dentro del contenedor
 COPY script.m /app/script.m
@@ -11,6 +12,9 @@ ARG SCRIPT_PATH
 
 # Copiar el script .m desde la ruta especificada
 COPY $SCRIPT_PATH /app/script.m
+
+# Establece la licencia de red de MATLAB
+ENV LM_LICENSE_FILE=7350@linuxcls10.dearborn.ford.com
 
 # Ejecutar el script .m con Matlab
 CMD ["matlab", "-nodisplay", "-r", "run('script.m');"]
