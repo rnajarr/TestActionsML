@@ -11,5 +11,7 @@ jobs:
       uses: actions/checkout@v2
     - name: Build dockerfile
       working-directory: docker
+      env:
+       LM_LICENSE_FILE: 7350@linuxcls10.dearborn.ford.com
       run: docker build -t mi-imagen -f dockerfile --build-arg SCRIPT_PATH=script.m . && docker run --rm -v script.m:/script.m mi-imagen
 
