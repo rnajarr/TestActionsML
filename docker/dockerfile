@@ -1,5 +1,5 @@
 # Imagen base de MATLAB
-FROM mathworks/matlab:r2020a
+FROM mathworks/matlab:r2021a
 
 # Copiar el script .m dentro del contenedor
 COPY script.m /app/script.m
