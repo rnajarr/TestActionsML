@@ -1,0 +1,14 @@
+on:
+  push:
+    branches:
+      - main
+jobs:
+  ejecucion-de-script:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Checkout del repositorio
+      uses: actions/checkout@v2
+    - name: Build dockerfile
+      working-directory: docker
+      run: docker build 
