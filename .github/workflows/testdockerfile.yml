@@ -11,4 +11,4 @@ jobs:
       uses: actions/checkout@v2
     - name: Build dockerfile
       working-directory: docker
-      run: docker build 
+      run: docker build -t mi-imagen -f dockerfile --build-arg SCRIPT_PATH=script.m .
